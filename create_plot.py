@@ -20,7 +20,7 @@ buffer_list = ['NNO',
 		       'ReReO',
 		       'Graphite',
 		       'QIF',
-		       'SiSiO2'	
+		       'SiSiO2',	
 		       'CrCr2O3',	
 		       'MoMoO2',
 		       'CaCaO',
