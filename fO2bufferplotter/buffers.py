@@ -903,7 +903,8 @@ def calc_TiTiO2(P, T):
 	return log_fO2
 
 #--------------PLOTTING-------------#
-def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1, buffers=['NNO', 'QFM']):
+def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1,
+	buffers=['NNO', 'QFM'], dpi=250):
 	"""
 	Returns a matplotlib plot of buffer curves at specified P and range of T's.
 
@@ -924,6 +925,9 @@ def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1,
 	buffers: list
 		OPTIONAL. Default is ['NNO', 'QFM']. List with strings of all buffers you wish to plot.
 		Possible buffers are: NNO, QFM, IW, SiSiO2, HM, CoCoO, ReReO, Graphite, QIF.
+
+	dpi: int
+		OPTIONAL. Default is 250. DPI of figure produced.
 	"""
 	PGPa = pressure/10000
 	temp_range = np.arange(temperature_min, temperature_max, temperature_step)
@@ -1001,5 +1005,5 @@ def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1,
 
 	ax1.legend(*zip(*filtered), loc='lower right')
 	plt.title('Redox buffers at ' + str(pressure) + ' bar')
-	fig.set_dpi(250)
+	fig.set_dpi(dpi)
 	return plt.show()
