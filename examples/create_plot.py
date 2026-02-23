@@ -12,24 +12,24 @@ temperature_step = 1 # Default
 
 # Choose which buffers to plot
 # comment out any buffers you don't wan to plot
-buffer_list = ['NNO',	
-		       'QFM', 	
-		       'IW',  	
-		       'HM', 	
-		       'CoCoO', 	
+buffer_list = ['HM',
 		       'ReReO',
+			   'NNO',	
+		       'QFM', 
+		       'CoCoO',	
+		       'IW',  	
 		       'Graphite',
-		       'QIF',
-		       'SiSiO2',	
-		       'CrCr2O3',	
-		       'MoMoO2',
-		       'CaCaO',
-		       'AlAl2O3',
-		       'KK2O',
-		       'MgMgO',
-		       'MnMnO',
-		       'NaNa2O',
-		       'TiTiO2'
+		       # 'QIF',
+		       # 'SiSiO2',	
+		       # 'CrCr2O3',	
+		       # 'MoMoO2',
+		       # 'CaCaO',
+		       # 'AlAl2O3',
+		       # 'KK2O',
+		       # 'MgMgO',
+		       # 'MnMnO',
+		       # 'NaNa2O',
+		       # 'TiTiO2',
 		       ]
 
 # The python call

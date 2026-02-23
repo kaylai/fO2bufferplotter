@@ -955,22 +955,21 @@ def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1,
 
 		# plot the curves
 		# plot the non-extrapolated portion
-		the_plt, = ax1.plot(buffer_usable_temp_range_C, y, color=curve_color, linewidth=1.5)
+		the_plt, = ax1.plot(buffer_usable_temp_range_C, y, color=curve_color, linewidth=1.5,
+			label=buffer_name)
 		figure_labels.append(buffer_name)
 
 		# if applicable, plot the lower extrapolation
 		if buffer_extrap_lower is not None:
 			extrap_lower_plt, = ax1.plot(buffer_extrap_lower_C, buffer_extrap_lower_y, 
 										 color=curve_color, linestyle='dashed',
-										 linewidth=1.5)
-			figure_labels.append('_nolegend_')
+										 linewidth=1.5, label='_nolegend_')
 
 		# if applicable, plot the upper extrapolation
 		if buffer_extrap_upper is not None:
 			extrap_upper_plt, = ax1.plot(buffer_extrap_upper_C, buffer_extrap_upper_y, 
 										 color=curve_color, linestyle='dashed',
-										 linewidth=1.5)
-			figure_labels.append('_nolegend_')
+										 linewidth=1.5, label='_nolegend_')
 
 		# TODO
 		# # add text annotation directly on plotted curve if desired
@@ -990,7 +989,8 @@ def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1,
 		# plt.annotate(buffer_name, xy=(xloc, yloc), xycoords='data')
 
 	# Define legend styles
-	labels = [i for i in figure_labels]
+	handles, labels = ax1.get_legend_handles_labels()
+	filtered = [(h, l) for h, l in zip(handles, labels) if not l.startswith('_')]
 
 	# Set x limits based on user inputs
 	ax1.set_xlim([temperature_min, temperature_max])
@@ -999,9 +999,7 @@ def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1,
 	plt.xlabel('Temperature ($^\circ$C)')
 	plt.ylabel('log $f$O$_2$')
 
-	ax1.legend(labels, loc='lower right')
+	ax1.legend(*zip(*filtered), loc='lower right')
 	plt.title('Redox buffers at ' + str(pressure) + ' bar')
+	fig.set_dpi(250)
 	return plt.show()
-
-#TESTING
-#plotlog_fO2(1, 700, 1500, temperature_step=1, buffers=['NNO', 'IW'])
