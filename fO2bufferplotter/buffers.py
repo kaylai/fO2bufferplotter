@@ -562,7 +562,10 @@ def calc_Graphite(P, T):
 	----------
 	French and Eugster (1965) Journal of Geophysical Research
 	"""
-	log_fO2 = (-20586/T) - 0.044 + np.log10(P) - 0.028 * (P-1)/T
+	# translate P to bars
+	P_bars = P*10000
+
+	log_fO2 = (-20586/T) - 0.044 + np.log10(P_bars) - 0.028 * (P_bars-1)/T
 	return log_fO2
 
 def calc_QIF(P, T):
