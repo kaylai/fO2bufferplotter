@@ -1000,10 +1000,11 @@ def plot_log_fO2(pressure, temperature_min, temperature_max, temperature_step=1,
 	ax1.set_xlim([temperature_min, temperature_max])
 
 	# Label axes
-	plt.xlabel('Temperature ($^\circ$C)')
+	plt.xlabel(r'Temperature ($^{\circ}$C)')
 	plt.ylabel('log $f$O$_2$')
 
 	ax1.legend(*zip(*filtered), loc='lower right')
 	plt.title('Redox buffers at ' + str(pressure) + ' bar')
+	plt.rcParams['savefig.dpi'] = dpi
 	fig.set_dpi(dpi)
 	return plt.show()
